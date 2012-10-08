@@ -5,11 +5,17 @@ require 'digest/md5'
 require 'json' # gem install json_pure   
 require 'itunes/library' # gem install itunes-library
 
-# Read in the input file from the command line
+# Read in the input file and output from the command line
 library_file = ARGV[0]
+output_file = ARGV[1]
 
 if library_file == nil
 	puts "Error: Please specify input library path as first argument"
+	Process.exit
+end
+
+if output_file == nil
+	puts "Error: Please specify ouput file as second argument"
 	Process.exit
 end
 

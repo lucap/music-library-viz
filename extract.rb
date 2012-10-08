@@ -29,5 +29,5 @@ for i in library.tracks do
 end
 
 File.open("temp.json","w") do |f|
-  f.write(tracks.to_json)
+  f.write(JSON.pretty_generate(tracks))
 end

@@ -24,6 +24,7 @@ if not File.exist? library_file
 	Process.exit
 end
 
+puts "Reading... " + library_file
 library = ITunes::Library.load(library_file)
 
 tracks = Hash.new()
@@ -40,7 +41,8 @@ for i in library.tracks do
 	tracks[id] = Hash['name'=>name, 'artist'=>artist, 'genre'=>genre]
 end
 
-File.open("temp.json","w") do |f|
+puts "Writing... " + output_file
+File.open(output_file,"w") do |f|
   f.write(JSON.pretty_generate(tracks))
 end
 

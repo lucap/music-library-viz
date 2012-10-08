@@ -5,14 +5,20 @@ require 'digest/md5'
 require 'json' # gem install json_pure   
 require 'itunes/library' # gem install itunes-library
 
-library = 'small_library.xml'
-#library = 'big_library.xml'
+# Read in the input file from the command line
+library_file = ARGV[0]
 
-if not File.exist? library
-	puts "Warning! Could not find library file: " + library
+if library_file == nil
+	puts "Error: Please specify input library path as first argument"
+	Process.exit
 end
 
-library = ITunes::Library.load(library)
+if not File.exist? library_file
+	puts "Error! Could not find library file: " + library_file
+	Process.exit
+end
+
+library = ITunes::Library.load(library_file)
 
 tracks = Hash.new()
 
@@ -31,3 +37,4 @@ end
 File.open("temp.json","w") do |f|
   f.write(JSON.pretty_generate(tracks))
 end
+

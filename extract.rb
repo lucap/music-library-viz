@@ -3,7 +3,7 @@ require 'rubygems'
 require 'bundler/setup'
 require 'digest'
 
-require 'json' # gem install json_pure   
+require 'json' 			 # gem install json_pure   
 require 'itunes/library' # gem install itunes-library
 
 # Read in the input file and output from the command line
@@ -35,11 +35,15 @@ for i in library.tracks do
 	name = i.name.to_s
 	artist = i.artist.to_s
 	genre = i.genre.to_s
+	album = i.album.to_s
 
 	# Make an id to avoid track name conflicts
-	id = Digest::MD5.hexdigest(name + artist + genre)
+	id = Digest::MD5.hexdigest(name + artist + genre + album)
 	
-	tracks[id] = Hash['name'=>name, 'artist'=>artist, 'genre'=>genre]
+	tracks[id] = Hash['name'=>name,
+					  'artist'=>artist,
+					  'genre'=>genre,
+					  'album'=>album]
 end
 
 puts "Writing... " + output_file

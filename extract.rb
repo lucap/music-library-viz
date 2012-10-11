@@ -1,6 +1,7 @@
 #!/usr/bin/ruby
 require 'rubygems'
-require 'digest/md5'
+require 'bundler/setup'
+require 'digest'
 
 require 'json' # gem install json_pure   
 require 'itunes/library' # gem install itunes-library

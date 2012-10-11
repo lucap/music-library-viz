@@ -1,10 +1,20 @@
+GIT
+  remote: git://github.com/josh/itunes-library.git
+  revision: fbd10a98c1c0fc66174f9df3b0959396eef5336d
+  branch: master
+  specs:
+    itunes-library (0.1.1)
+      plist
+
 GEM
   remote: http://rubygems.org/
   specs:
     json_pure (1.7.5)
+    plist (3.1.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  itunes-library!
   json_pure

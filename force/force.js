@@ -1,3 +1,15 @@
+
+// Extract the GET parameters
+// http://stackoverflow.com/questions/827368/use-the-get-parameter-of-the-url-in-javascript
+function querystring(key) {
+   var re=new RegExp('(?:\\?|&)'+key+'=(.*?)(?=&|$)','gi');
+   var r=[], m;
+   while ((m=re.exec(document.location.search)) != null) r[r.length]=m[1];
+   return r;
+}
+
+data_source = querystring("source")[0];
+
 var width = 960,
     height = 500;
 
@@ -12,7 +24,7 @@ var svg = d3.select("#chart").append("svg")
     .attr("width", width)
     .attr("height", height);
 
-d3.json("network.json", function(json) {
+d3.json(data_source, function(json) {
   force
       .nodes(json.nodes)
       .links(json.links)

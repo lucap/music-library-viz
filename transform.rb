@@ -20,7 +20,7 @@ if output_file == nil
 end
 
 if not File.exist? input_file
-	puts "Error! Could not find library file: " + input_file
+	puts "Error! Could not find input file: " + input_file
 	Process.exit
 end
 
